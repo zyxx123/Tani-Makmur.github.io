@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaniMakmur - Solusi Pertanian Modern</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2d5a27, #4a7c59);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-image {
+            height: 70px;
+            width: 70px;
+            margin-right: 0.5rem;
+            border-radius: 15px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Home Page */
+        .hero {
+            background: url('https://source.unsplash.com/1600x900/?agriculture,technology') no-repeat center center;
+            background-attachment: fixed;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #52885a;
+            text-align: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease 0.2s both;
+        }
+
+        .btn {
+            background: #52885a;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 1rem;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: slideInUp 3s ease 0.4s both;
+
+        }
+
+        .btn:hover {
+            background: #4a7c59;
+            transform: translateY(-5px);
+            box-shadow: 0 25px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Features Section */
+        .features {
+            background: #f9f9f9;
+            padding: 10rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: background 0.6s ease, transform 0.6s ease, box-shadow 0.6s ease;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+            animation: slideInUp 0.9s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-20px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* About Page */
+        .about-content {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        padding: 4rem 0;
+
+    }
+
+
+        .about-text1 h2 {
+            color: var(--primary-color);
+            text-align: top;
+            font-size: 2.5rem;
+            font-weight: 700px;
+            text-align: center;
+
+        }
+
+        .about-text1 h3 {
+            color: var(--primary-color);
+            text-align: top;
+            font-size: 1.5rem;
+            font-weight: 700px;
+            text-align: center;
+
+        }
+
+        .about-text1 p {
+            text-align: left;
+
+        }
+
+       .about-row {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+        justify-content: space-between;
+
+        }
+
+        .about-text2 h2 {
+            color: var(--primary-color);
+            text-align: top;
+            font-size: 1.5rem;
+            font-weight: 700px;
+            text-align: center;
+        }    
+
+        .about-text2 {
+        flex: 1;
+
+        }
+
+        .about-img {
+        flex: 1;
+        margin-bottom: 460px;
+        text-align: right;
+
+        }
+
+        .about-img img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+        }
+
+
+        /* Services Page */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #52885a, #4a7c59);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Contact Page */
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2d5a27;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #52885a;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d5a27;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #8bc34a;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #b8d4b8;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #52885a;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+            background: #8bc34a;
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction:column;
+                align-items: center;
+                transition: 2s;
+                gap: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+        }
+
+        .section-title {
+            text-align: center;
+            color: #2d5a27;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+            <img src="logo.png" alt="" class="logo-image">
+            <span>TaniMakmur</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')" class="nav-link active">Home</a></li>
+                <li><a href="#" onclick="showPage('about')" class="nav-link">Profil</a></li>
+                <li><a href="#" onclick="showPage('services')" class="nav-link">Layanan</a></li>
+                <li><a href="#" onclick="showPage('products')" class="nav-link">Produk</a></li>
+                <li><a href="#" onclick="showPage('contact')" class="nav-link">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Revolusi Pertanian Indonesia</h1>
+                        <p>Menghadirkan teknologi modern untuk meningkatkan produktivitas dan kesejahteraan petani Indonesia</p>
+                        <a href="#" class="btn" onclick="showPage('services')">Jelajahi Layanan</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="container">
+                    <h2 class="section-title">Keunggulan Kami</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🌱</div>
+                            <h3>Teknologi Modern</h3>
+                            <p>Menggunakan teknologi terdepan dalam bidang pertanian untuk hasil yang optimal</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">👨‍🌾</div>
+                            <h3>Ahli Berpengalaman</h3>
+                            <p>Tim ahli dengan pengalaman puluhan tahun dalam bidang pertanian</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌾</div>
+                            <h3>Hasil Berkualitas</h3>
+                            <p>Menjamin hasil panen berkualitas tinggi dengan metode yang ramah lingkungan</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="page">
+            <section class="container">
+                <h2 class="section-title">Profil Perusahaan</h2>
+                <div class="about-content">
+                    <div class="about-text1">
+                        <h2>Tentang TaniMakmur</h2>
+                        <p>TaniMakmur adalah perusahaan teknologi pertanian yang berdedikasi untuk memajukan sektor pertanian Indonesia melalui inovasi dan teknologi modern.</p>
+                        <p>Didirikan pada tahun 2025, kami akan membantu ribuan petani meningkatkan produktivitas dan kualitas hasil panen mereka dengan solusi pertanian yang berkelanjutan.</p>
+                        <h3>Visi</h3> 
+                        <p>Menjadi pelopor pertanian modern Indonesia yang berkelanjutan, berdaya saing global, dan menyejahterakan petani melalui inovasi teknologi dan semangat kemandirian.</p>
+                        <h3>Misi</h3>
+                        <p>Meningkatkan kesejahteraan petani melalui solusi pertanian berbasis teknologi yang mudah diakses dan efisien.
+                        <p>Mendorong transformasi digital dalam pertanian dengan menyediakan layanan seperti smart farming, monitoring cuaca, dan analisis tanah berbasis data.
+                        <p>Melestarikan lingkungan hidup dengan mempromosikan praktik pertanian organik, ramah lingkungan, dan penggunaan sumber daya yang bijak.</p>
+                    </div>
+                    <div class="about-row">
+                        <div class="about-text2">
+                            <h2>Filosofi</h2>    
+                            <h3>Nama & Identitas: "Tani Makmur"</h3>
+                            <p>Ini mencerminkan kemakmuran dalam pertanian. Tani berarti bercocok tanam, dan makmur mencerminkan hasil yang melimpah, kehidupan petani yang sejahtera, dan pertumbuhan yang berkelanjutan.</p>
+                            <h3>Bentuk Perisai</h3>
+                            <p>Melambangkan perlindungan, ketahanan, dan kedaulatan pangan. Ini mencerminkan semangat kemandirian petani dan kekuatan menghadapi tantangan zaman. Simbol stabilitas dan keberlanjutan dalam menghadapi perubahan iklim atau ekonomi.</p>
+                            <h3>Simbol Daun Tiga & Lahan Bertingkat</h3>
+                            <p>Melambangkan pertumbuhan, kehidupan, dan keberagaman hasil tani (padi, hortikultura, dan palawija).</p>
+                            <p>Lahan atau garis-garis lengkung : Mewakili area pertanian subur, irigasi yang teratur, dan konektivitas antara petani, alam, dan teknologi.</p>
+                            <h3>Bentuk Matahari Setengah Lingkaran</h3>
+                            <p>Makna: Harapan baru, tenaga, dan semangat. Representasi waktu pagi, saat kerja keras dimulai simbol dari ketekunan dan dedikasi petani.</p>
+                            <h3>Warna Hijau</h3> 
+                            <p>Melambangkan kesuburan tanah, kelestarian alam, dan harapan hidup. Identik dengan pertanian yang ramah lingkungan dan berkelanjutan. Warna ini menunjukkan bahwa pertanian dan alam adalah inti utama bisnis.</p>
+                            <h3>Warna Biru</h3> 
+                            <p>Melambangkan air, langit, dan teknologi. Menunjukkan pentingnya sumber daya air, irigasi, serta keterhubungan dengan langit (cuaca, musim). Menunjukkan bahwa unsur teknologi atau inovasi mendukung tapi tidak mengambil alih.</p>
+                            <h3>Warna Putih</h3> 
+                            <p>Makna kejujuran, kemurnian, dan transparansi dalam proses usaha. Warna putih memberi ruang ‘nafas’ visual, mencerminkan keterbukaan terhadap perubahan dan kolaborasi.</p>
+                        </div>   
+                        <div class="about-img">
+                            <img src="logo.png" alt="logo">
+                        </div>        
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Services Page -->
+        <div id="services" class="page">
+            <section class="container">
+                <h2 class="section-title">Layanan Kami</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>🔬 Analisis Tanah</h3>
+                        <p>Layanan analisis tanah mendalam untuk menentukan komposisi nutrisi dan pH tanah optimal untuk berbagai jenis tanaman.</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>Analisis kandungan NPK</li>
+                            <li>Pengukuran pH tanah</li>
+                            <li>Rekomendasi pupuk</li>
+                            <li>Konsultasi ahli</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h3>🌦️ Monitoring Cuaca</h3>
+                        <p>Sistem monitoring cuaca real-time untuk membantu petani merencanakan aktivitas pertanian dengan lebih akurat.</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>Prakiraan cuaca 7 hari</li>
+                            <li>Alert sistem</li>
+                            <li>Data historis</li>
+                            <li>Mobile app</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h3>🌿 Konsultasi Pertanian</h3>
+                        <p>Konsultasi dengan ahli pertanian berpengalaman untuk optimalisasi hasil panen dan pengelolaan lahan.</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>Konsultasi online/offline</li>
+                            <li>Perencanaan tanam</li>
+                            <li>Manajemen hama</li>
+                            <li>Strategi panen</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h3>🚜 Smart Farming</h3>
+                        <p>Solusi pertanian pintar menggunakan IoT dan sensor untuk otomatisasi sistem irigasi dan monitoring tanaman.</p>
+                        <ul style="margin-top: 1rem;">
+                            <li>Sensor kelembaban</li>
+                            <li>Sistem irigasi otomatis</li>
+                            <li>Monitoring real-time</li>
+                            <li>Dashboard analytics</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Products Page -->
+        <div id="products" class="page">
+            <section class="container">
+                <h2 class="section-title">Produk Unggulan</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>🌱 Bibit Unggul</h3>
+                        <p>Bibit berkualitas tinggi hasil riset dan pengembangan untuk berbagai jenis tanaman pangan dan hortikultura.</p>
+                        <div style="margin-top: 1rem;">
+                            <strong>Keunggulan:</strong>
+                            <ul style="margin-top: 0.5rem;">
+                                <li>Tahan hama dan penyakit</li>
+                                <li>Produktivitas tinggi</li>
+                                <li>Adaptasi iklim tropis</li>
+                                <li>Sertifikat benih</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <h3>🧪 Pupuk Organik</h3>
+                        <p>Pupuk organik premium yang ramah lingkungan untuk meningkatkan kesuburan tanah secara alami.</p>
+                        <div style="margin-top: 1rem;">
+                            <strong>Komposisi:</strong>
+                            <ul style="margin-top: 0.5rem;">
+                                <li>Kompos matang 60%</li>
+                                <li>Mikroorganisme 25%</li>
+                                <li>Mineral alami 15%</li>
+                                <li>Bebas kimia berbahaya</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <h3>📱 AgriApp Mobile</h3>
+                        <p>Aplikasi mobile terintegrasi untuk manajemen pertanian modern di ujung jari Anda.</p>
+                        <div style="margin-top: 1rem;">
+                            <strong>Fitur:</strong>
+                            <ul style="margin-top: 0.5rem;">
+                                <li>Kalendar tanam</li>
+                                <li>Marketplace produk</li>
+                                <li>Forum diskusi</li>
+                                <li>Edukasi pertanian</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <h3>⚙️ Alat Pertanian</h3>
+                        <p>Peralatan pertanian modern untuk meningkatkan efisiensi dan produktivitas kerja petani.</p>
+                        <div style="margin-top: 1rem;">
+                            <strong>Katalog:</strong>
+                            <ul style="margin-top: 0.5rem;">
+                                <li>Hand sprayer elektrik</li>
+                                <li>Mesin tanam otomatis</li>
+                                <li>Drone penyemprot</li>
+                                <li>Sensor monitoring</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact" class="page">
+            <section class="container">
+                <h2 class="section-title">Hubungi Kami</h2>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subjek</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Kirim Pesan</button>
+                    </form>
+                </div>
+
+                <div style="margin-top: 3rem; text-align: center;">
+                    <h3 style="color: #2d5a27; margin-bottom: 1rem;">Informasi Kontak</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                        <div>
+                            <h4 style="color: #52885a;">📍 Alamat</h4>
+                            <p>Jl. Pertanian Raya No. 123<br>Jakarta Selatan 12950</p>
+                        </div>
+                        <div>
+                            <h4 style="color: #52885a;">📞 Telepon</h4>
+                            <p>+62 21 1234 5678<br>+62 812 3456 7890</p>
+                        </div>
+                        <div>
+                            <h4 style="color: #52885a;">✉️ Email</h4>
+                            <p>info@tanimakmur.co.id<br>support@tanimakmur.co.id</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TaniMakmur</h3>
+                    <p>Memajukan pertanian Indonesia dengan teknologi modern dan berkelanjutan.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">📘</a>
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">🐦</a>
+                        <a href="#" class="social-icon">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Layanan</h3>
+                    <p><a href="#">Analisis Tanah</a></p>
+                    <p><a href="#">Monitoring Cuaca</a></p>
+                    <p><a href="#">Konsultasi Pertanian</a></p>
+                    <p><a href="#">Smart Farming</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Perusahaan</h3>
+                    <p><a href="#">Tentang Kami</a></p>
+                    <p><a href="#">Karir</a></p>
+                    <p><a href="#">Blog</a></p>
+                    <p><a href="#">Kontak</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Dukungan</h3>
+                    <p><a href="#">FAQ</a></p>
+                    <p><a href="#">Bantuan</a></p>
+                    <p><a href="#">Syarat & Ketentuan</a></p>
+                    <p><a href="#">Kebijakan Privasi</a></p>
+                </div>
+            </div>
+            <hr style="border: 1px solid #4a7c59; margin: 2rem 0;">
+            <p>&copy; 2025 TaniMakmur. Semua hak dilindungi undang-undang.</p>
+        </div>
+    </footer>
+
+    <script>
+    function showPage(pageId) {
+        // Hide all pages
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => page.classList.remove('active'));
+        
+        // Show selected page
+        document.getElementById(pageId).classList.add('active');
+        
+        // Update navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => link.classList.remove('active'));
+        event.target.classList.add('active');
+
+        // Scroll to top
+        window.scrollTo(0, 0);
+    }
+
+    // Contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Terima kasih! Pesan Anda telah dikirim. Tim kami akan segera menghubungi Anda.');
+        this.reset();
+    });
+
+    // Smooth scrolling and animations on scroll
+    document.addEventListener('DOMContentLoaded', function () {
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target); // run only once
+                }
+            });
+        }, observerOptions);
+
+        // Select elements to animate
+        const animatedElements = document.querySelectorAll('.feature-card, .service-card');
+        animatedElements.forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    });
+    </script>
+</body>
+</html>

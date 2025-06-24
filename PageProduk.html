@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daftar Produk Pertanian</title>
+  <style>
+    :root {
+      --green-light: #d0f0c0;
+      --green-medium: #4caf50;
+      --green-dark: #2e7d32;
+      --green-accent: #81c784;
+      --gray-light: #f9f9f9;
+      --gray-dark: #333;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--gray-light);
+      color: var(--green-dark);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--green-dark), var(--green-medium));
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-weight: 400;
+      font-size: 1.2rem;
+      font-style: italic;
+      opacity: 0.85;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: var(--green-dark);
+      text-decoration: none;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .product-content {
+      padding: 1rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem 0;
+      color: var(--green-dark);
+    }
+
+    .product-description {
+      flex: 1;
+      font-size: 1rem;
+      margin: 0 0 1rem 0;
+      color: #4a4a4a;
+    }
+
+    .btn-see {
+      background-color: var(--green-medium);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 0.7rem 1.2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+      max-width: fit-content;
+    }
+
+    .btn-see:hover,
+    .btn-see:focus {
+      background-color: var(--green-dark);
+    }
+    .btn-back {
+      background-color: var(--green-medium);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    footer {
+      background-color: var(--green-dark);
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 400px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .product-title {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Produk Pertanian Unggulan</h1>
+    <p>Segar, Alami, dan Berkualitas Tinggi</p>
+  </header>
+  <main>
+    <section class="products" aria-label="Daftar Produk Pertanian">
+      <a href="produk1.html" class="product-card" aria-label="Lihat detail Tomat Organik">
+        <img class="product-image" src="foto1.jpg" alt="Tomat segar" />
+        <div class="product-content">
+          <h2 class="product-title">Tomat Organik</h2>
+          <p class="product-description">Tomat segar hasil pertanian organik tanpa bahan kimia, kaya akan vitamin dan rasa alami.</p>
+          <span class="btn-see">Lihat</span>
+        </div>
+      </a>
+      <a href="produk2.html" class="product-card" aria-label="Lihat detail Biji Wijen Hitam">
+        <img class="product-image" src="foto2.jpg" alt="Wijen hitam" />
+        <div class="product-content">
+          <h2 class="product-title">Biji Wijen Hitam</h2>
+          <p class="product-description">Biji wijen hitam berkualitas untuk keperluan kuliner dan kesehatan, dipanen dengan proses tradisional.</p>
+          <span class="btn-see">Lihat</span>
+        </div>
+      </a>
+      <a href="produk3.html" class="product-card" aria-label="Lihat detail Pisang Cavendish">
+        <img class="product-image" src="foto3.jpg" alt="Pisang segar" />
+        <div class="product-content">
+          <h2 class="product-title">Pisang Cavendish</h2>
+          <p class="product-description">Pisang segar Cavendish siap konsumsi, manis dan lembut dari ladang pertanian lokal.</p>
+          <span class="btn-see">Lihat</span>
+        </div>
+      </a>
+      <a href="produk4.html" class="product-card" aria-label="Lihat detail Cabai Merah Segar">
+        <img class="product-image" src="foto4.jpg" alt="Cabai merah" />
+        <div class="product-content">
+          <h2 class="product-title">Cabai Merah Segar</h2>
+          <p class="product-description">Cabai merah segar dengan tingkat kepedasan yang pas, cocok untuk berbagai masakan khas.</p>
+          <span class="btn-see">Lihat</span>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <a href="h.html" class="btn-back" aria-label="Kembali ke home">Kembali ke Home</a>
+  <footer>
+    &copy; 2025 TaniMakmur.
+  </footer>
+</body>
+</html>

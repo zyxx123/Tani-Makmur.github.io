@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TaniMakmur - Solusi Pertanian Modern dengan teknologi terkini untuk meningkatkan produktivitas petani">
+    <title>TaniMakmur - Solusi Pertanian Modern</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2d5a27;
+            --secondary-color: #4a7c59;
+            --accent-color: #8bc34a;
+            --text-color: #333;
+            --light-text: #b8d4b8;
+            --white: #ffffff;
+            --light-bg: #f9f9f9;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+            background-color: var(--light-bg);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: 50px;
+            margin-right: 0.75rem;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover, 
+        .nav-links a.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        .page {
+            display: none;
+            min-height: calc(100vh - 80px);
+            padding: 2rem 0;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://deriota.com/img/20230429141448-2023-04-29news141442.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            animation: fadeIn 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease 0.3s both;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            animation: fadeIn 1s ease 0.6s both;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* About Page */
+        .about-content {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        padding: 4rem 0;
+
+    }
+
+
+        .about-text1 h2 {
+            color: var(--primary-color);
+            text-align: top;
+            font-size: 2.5rem;
+            font-weight: 700px;
+            text-align: center;
+
+        }
+
+        .about-text1 h3 {
+            color: var(--primary-color);
+            text-align: top;
+            font-size: 1.5rem;
+            font-weight: 700px;
+            text-align: center;
+
+        }
+
+        .about-text1 p {
+            text-align: left;
+
+        }
+
+       .about-row {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+        justify-content: space-between;
+
+        }
+
+        .about-text2 h2 {
+            color: var(--primary-color);
+            text-align: top;
+            font-size: 1.5rem;
+            font-weight: 700px;
+            text-align: center;
+        }    
+
+        .about-text2 {
+        flex: 1;
+
+        }
+
+        .about-img {
+        flex: 1;
+        margin-bottom: 460px;
+        text-align: right;
+
+        }
+
+        .about-img img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+        }
+        /* Services & Products */
+        .services-grid, .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .service-card, .product-card {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+        }
+
+        .service-card:hover, .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-card h3, .product-card h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .service-card ul, .product-card ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .service-card li, .product-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, 
+        .footer-section a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: var(--transition);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Utility Classes */
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .about-image {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+            
+            .check-list {
+                display: inline-block;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: 0.5s ease;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .logo-img {
+                height: 40px;
+                width: 40px;
+            }
+            
+            .hero {
+                height: 80vh;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="mainHeader">
+        <nav>
+            <a href="#" class="logo" onclick="showPage('home')">
+                <img src="logo.png" alt="TaniMakmur Logo" class="logo-img">
+                <span>TaniMakmur</span>
+            </a>
+
+            <button class="hamburger" id="hamburger">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" onclick="showPage('home')" class="nav-link active">Home</a></li>
+                <li><a href="#" onclick="showPage('about')" class="nav-link">Profil</a></li>
+                <li><a href="#" onclick="showPage('services')" class="nav-link">Layanan</a></li>
+                <li><a href="PageProduk.html" onclick="showPage('products')" class="nav-link">Produk</a></li>
+                <li><a href="kontak.html" onclick="showPage('contact')" class="nav-link">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Revolusi Pertanian Indonesia</h1>
+                        <p>Menghadirkan teknologi modern untuk meningkatkan produktivitas dan kesejahteraan petani Indonesia</p>
+                        <a href="#" class="btn" onclick="showPage('services')">Jelajahi Layanan</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="container">
+                    <h2 class="section-title">Keunggulan Kami</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🌱</div>
+                            <h3>Teknologi Modern</h3>
+                            <p>Menggunakan teknologi terdepan dalam bidang pertanian untuk hasil yang optimal</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">👨‍🌾</div>
+                            <h3>Ahli Berpengalaman</h3>
+                            <p>Tim ahli dengan pengalaman puluhan tahun dalam bidang pertanian</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌾</div>
+                            <h3>Hasil Berkualitas</h3>
+                            <p>Menjamin hasil panen berkualitas tinggi dengan metode yang ramah lingkungan</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+       <!-- About Page -->
+        <div id="about" class="page">
+            <section class="container">
+                <h2 class="section-title">Profil Perusahaan</h2>
+                <div class="about-content">
+                    <div class="about-text1">
+                        <h2>Tentang TaniMakmur</h2>
+                        <p>TaniMakmur adalah perusahaan teknologi pertanian yang berdedikasi untuk memajukan sektor pertanian Indonesia melalui inovasi dan teknologi modern.</p>
+                        <p>Didirikan pada tahun 2025, kami akan membantu ribuan petani meningkatkan produktivitas dan kualitas hasil panen mereka dengan solusi pertanian yang berkelanjutan.</p>
+                        <h3>Visi</h3> 
+                        <p>Menjadi pelopor pertanian modern Indonesia yang berkelanjutan, berdaya saing global, dan menyejahterakan petani melalui inovasi teknologi dan semangat kemandirian.</p>
+                        <h3>Misi</h3>
+                        <p>Meningkatkan kesejahteraan petani melalui solusi pertanian berbasis teknologi yang mudah diakses dan efisien.
+                        <p>Mendorong transformasi digital dalam pertanian dengan menyediakan layanan seperti smart farming, monitoring cuaca, dan analisis tanah berbasis data.
+                        <p>Melestarikan lingkungan hidup dengan mempromosikan praktik pertanian organik, ramah lingkungan, dan penggunaan sumber daya yang bijak.</p>
+                    </div>
+                    <div class="about-row">
+                        <div class="about-text2">
+                            <h2>Filosofi</h2>    
+                            <h3>Nama & Identitas: "Tani Makmur"</h3>
+                            <p>Ini mencerminkan kemakmuran dalam pertanian. Tani berarti bercocok tanam, dan makmur mencerminkan hasil yang melimpah, kehidupan petani yang sejahtera, dan pertumbuhan yang berkelanjutan.</p>
+                            <h3>Bentuk Perisai</h3>
+                            <p>Melambangkan perlindungan, ketahanan, dan kedaulatan pangan. Ini mencerminkan semangat kemandirian petani dan kekuatan menghadapi tantangan zaman. Simbol stabilitas dan keberlanjutan dalam menghadapi perubahan iklim atau ekonomi.</p>
+                            <h3>Simbol Daun Tiga & Lahan Bertingkat</h3>
+                            <p>Melambangkan pertumbuhan, kehidupan, dan keberagaman hasil tani (padi, hortikultura, dan palawija).</p>
+                            <p>Lahan atau garis-garis lengkung : Mewakili area pertanian subur, irigasi yang teratur, dan konektivitas antara petani, alam, dan teknologi.</p>
+                            <h3>Bentuk Matahari Setengah Lingkaran</h3>
+                            <p>Makna: Harapan baru, tenaga, dan semangat. Representasi waktu pagi, saat kerja keras dimulai simbol dari ketekunan dan dedikasi petani.</p>
+                            <h3>Warna Hijau</h3> 
+                            <p>Melambangkan kesuburan tanah, kelestarian alam, dan harapan hidup. Identik dengan pertanian yang ramah lingkungan dan berkelanjutan. Warna ini menunjukkan bahwa pertanian dan alam adalah inti utama bisnis.</p>
+                            <h3>Warna Biru</h3> 
+                            <p>Melambangkan air, langit, dan teknologi. Menunjukkan pentingnya sumber daya air, irigasi, serta keterhubungan dengan langit (cuaca, musim). Menunjukkan bahwa unsur teknologi atau inovasi mendukung tapi tidak mengambil alih.</p>
+                            <h3>Warna Putih</h3> 
+                            <p>Makna kejujuran, kemurnian, dan transparansi dalam proses usaha. Warna putih memberi ruang ‘nafas’ visual, mencerminkan keterbukaan terhadap perubahan dan kolaborasi.</p>
+                        </div>   
+                        <div class="about-img">
+                            <img src="logo.png" alt="logo">
+                        </div>        
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Services Page -->
+        <div id="services" class="page">
+            <section class="container">
+                <h2 class="section-title">Layanan Kami</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>🔬 Analisis Tanah</h3>
+                        <p>Layanan analisis tanah mendalam untuk menentukan komposisi nutrisi dan pH tanah optimal untuk berbagai jenis tanaman.</p>
+                        <ul>
+                            <li>Analisis kandungan NPK</li>
+                            <li>Pengukuran pH tanah</li>
+                            <li>Rekomendasi pupuk</li>
+                            <li>Konsultasi ahli</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h3>🌦️ Monitoring Cuaca</h3>
+                        <p>Sistem monitoring cuaca real-time untuk membantu petani merencanakan aktivitas pertanian dengan lebih akurat.</p>
+                        <ul>
+                            <li>Prakiraan cuaca 7 hari</li>
+                            <li>Alert sistem</li>
+                            <li>Data historis</li>
+                            <li>Mobile app</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h3>🌿 Konsultasi Pertanian</h3>
+                        <p>Konsultasi dengan ahli pertanian berpengalaman untuk optimalisasi hasil panen dan pengelolaan lahan.</p>
+                        <ul>
+                            <li>Konsultasi online/offline</li>
+                            <li>Perencanaan tanam</li>
+                            <li>Manajemen hama</li>
+                            <li>Strategi panen</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <h3>🚜 Smart Farming</h3>
+                        <p>Solusi pertanian pintar menggunakan IoT dan sensor untuk otomatisasi sistem irigasi dan monitoring tanaman.</p>
+                        <ul>
+                            <li>Sensor kelembaban</li>
+                            <li>Sistem irigasi otomatis</li>
+                            <li>Monitoring real-time</li>
+                            <li>Dashboard analytics</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TaniMakmur</h3>
+                    <p>Memajukan pertanian Indonesia dengan teknologi modern dan berkelanjutan.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Layanan</h3>
+                    <a href="#" onclick="showPage('services')">Analisis Tanah</a>
+                    <a href="#" onclick="showPage('services')">Monitoring Cuaca</a>
+                    <a href="#" onclick="showPage('services')">Konsultasi Pertanian</a>
+                    <a href="#" onclick="showPage('services')">Smart Farming</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TaniMakmur.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.textContent = '☰';
+                }
+            });
+        });
+        
+        // Show page function
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        
+        // Header scroll effect
+        const header = document.getElementById('mainHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Intersection Observer for animations
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.feature-card, .service-card, .about-text, .about-image');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
+            });
+        };
+        
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>

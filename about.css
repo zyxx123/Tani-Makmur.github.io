@@ -1,0 +1,406 @@
+        :root {
+            --primary-color: #2d5a27;      /* Hijau tua untuk elemen utama */
+            --secondary-color: #4a7c59;    /* Hijau sedang untuk elemen sekunder */
+            --accent-color: #8bc34a;       /* Hijau terang untuk aksen */
+            --text-color: #333;            /* Warna teks utama */
+            --light-text: #b8d4b8;         /* Warna teks terang */
+            --white: #ffffff;              /* Warna putih */
+            --light-bg: #f9f9f9;           /* Background terang */
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.1);  /* Bayangan kartu */
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);  /* Transisi smooth */
+            --border-radius: 15px;         /* Radius border konsisten */
+        }
+
+        /* Reset CSS untuk konsistensi tampilan di semua browser */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Styling untuk body utama */
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header - bagian atas halaman */
+        header {
+            background: linear-gradient(135deg,  #4a7c59, #2d5a27 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efek animasi di background header */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s linear infinite;
+            pointer-events: none;
+        }
+
+        /* Animasi mengapung untuk background header */
+        @keyframes float {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(50px) translateY(50px); }
+        }
+
+        /* Judul utama di header */
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Tombol kembali ke beranda */
+        .home-btn {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Efek hover untuk tombol */
+        .home-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Container utama untuk konten */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Judul section */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 3rem;
+            position: relative;
+            font-weight: 700;
+        }
+
+        /* Garis dekoratif di bawah judul section */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Container untuk konten tentang perusahaan */
+        .about-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        /* Bagian teks utama */
+        .about-text1 {
+            margin-bottom: 3rem;
+        }
+
+        .about-text1 h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid #4CAF50;
+            padding-left: 1rem;
+        }
+
+        .about-text1 h3 {
+            color: #34495e;
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .about-text1 p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            text-align: justify;
+            color: #555;
+        }
+
+        /* Layout dua kolom untuk filosofi perusahaan */
+        .about-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-top: 3rem;
+        }
+
+        /* Bagian teks filosofi */
+        .about-text2 h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid #3498db;
+            padding-left: 1rem;
+        }
+
+        .about-text2 h3 {
+            color: #34495e;
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.8rem 0;
+            font-weight: 600;
+            background: linear-gradient(90deg, #f8f9fa, transparent);
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+
+        .about-text2 p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: #666;
+        }
+
+        /* Container untuk gambar logo */
+        .about-img {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .about-img img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            border: 3px solid #f8f9fa;
+        }
+
+        /* Efek hover untuk gambar logo */
+        .about-img img:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+        }
+               /* Styling logo dengan animasi hover */
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);  /* Efek zoom saat hover */
+        }
+
+        /* Gambar logo dengan animasi rotasi */
+        .logo-img {
+            height: 50px;
+            width: 50px;
+            margin-right: 0.75rem;
+            border-radius: 10px;
+            object-fit: contain;
+            transition: var(--transition);
+            animation: float 3s ease-in-out infinite;  /* Animasi mengambang */
+        }
+
+        /* Animasi mengambang untuk logo */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Styling navigasi links */
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efek hover untuk navigasi dengan animasi slide */
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+        }
+
+        .nav-links a:hover::before {
+            left: 100%;  /* Animasi shine effect */
+        }
+
+        .nav-links a:hover, 
+        .nav-links a.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Hamburger menu untuk mobile */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .hamburger:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsif untuk tablet */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .about-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .about-row {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-img {
+                order: -1; /* Pindahkan gambar ke atas di mobile */
+                position: static;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-text1 h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+ /* Responsive design untuk mobile */
+        @media (max-width: 768px) {
+            /* Mobile navigation */
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(45, 90, 39, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+        }
+
+
+        /* Animasi fade-in untuk konten */
+        .about-content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Styling untuk scrollbar (khusus webkit) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #4CAF50, #45a049);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #45a049, #4CAF50);
+        }
